@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  web:
+    image: airflow:latest
+    container_name: airflow
+    ports:
+      - 8080:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: >
+      bash -c "echo airflow | sudo -S chmod 777 /var/run/docker.sock && airflow webserver -p 8080 -D && airflow scheduler -D"
