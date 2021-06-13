@@ -17,17 +17,8 @@ RUN airflow db init && \
     --email yohei.yamana@syncthought.com \
     --password admin
 
-# COPY airflow.cfg /opt/airflow/
 COPY dags/* /opt/airflow/dags/
 
-RUN airflow db init && \
-    airflow users create \
-    --username admin \
-    --firstname admin \
-    --lastname admin \
-    --role Admin \
-    --email yohei.yamana@syncthought.com \
-    --password admin
-
-RUN airflow dags unpause docker_dag
-RUN airflow dags unpause tutorial
+# RUN airflow dags unpause docker_dag
+# RUN airflow dags unpause control_flow
+# RUN airflow dags unpause tutorial
